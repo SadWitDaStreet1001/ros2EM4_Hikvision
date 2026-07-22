@@ -1,0 +1,51 @@
+<launch>
+  <arg name="rtsp_url" default="rtsp://admin:hyzx_hyzx@192.168.1.64:554/Streaming/Channels/102"/>
+  <arg name="image_topic" default="/hikvision/image_raw"/>
+  <arg name="frame_id" default="hikvision_camera"/>
+  <arg name="encoding" default="bgr8"/>
+  <arg name="capture_backend" default="ffmpeg"/>
+  <arg name="ffmpeg_capture_options" default="rtsp_transport;tcp|fflags;nobuffer|flags;low_delay|max_delay;0|reorder_queue_size;0|stimeout;5000000"/>
+  <arg name="target_fps" default="10.0"/>
+  <arg name="show_local" default="false"/>
+  <arg name="publisher_queue_size" default="1"/>
+  <arg name="cloud_topic" default="/rslidar_points"/>
+  <arg name="data_dir" default="$(find collector)/data/hikvision"/>
+  <arg name="max_sync_age" default="0.02"/>
+  <arg name="single_sync_timeout" default="0.5"/>
+  <arg name="image_buffer_size" default="10"/>
+  <arg name="cloud_buffer_size" default="60"/>
+  <arg name="preview_scale" default="1.0"/>
+  <arg name="display_fps" default="10.0"/>
+  <arg name="show_image_preview" default="true"/>
+  <arg name="show_lidar_preview" default="false"/>
+  <arg name="image_sub_queue_size" default="1"/>
+  <arg name="cloud_sub_queue_size" default="10"/>
+
+  <include file="$(find collector)/launch/hikvision/hikvision.launch">
+    <arg name="rtsp_url" value="$(arg rtsp_url)"/>
+    <arg name="image_topic" value="$(arg image_topic)"/>
+    <arg name="frame_id" value="$(arg frame_id)"/>
+    <arg name="encoding" value="$(arg encoding)"/>
+    <arg name="capture_backend" value="$(arg capture_backend)"/>
+    <arg name="ffmpeg_capture_options" value="$(arg ffmpeg_capture_options)"/>
+    <arg name="target_fps" value="$(arg target_fps)"/>
+    <arg name="show_local" value="$(arg show_local)"/>
+    <arg name="publisher_queue_size" value="$(arg publisher_queue_size)"/>
+  </include>
+
+  <include file="$(find collector)/launch/hikvision/hikvision_collect.launch">
+    <arg name="image_topic" value="$(arg image_topic)"/>
+    <arg name="cloud_topic" value="$(arg cloud_topic)"/>
+    <arg name="data_dir" value="$(arg data_dir)"/>
+    <arg name="max_sync_age" value="$(arg max_sync_age)"/>
+    <arg name="single_sync_timeout" value="$(arg single_sync_timeout)"/>
+    <arg name="image_buffer_size" value="$(arg image_buffer_size)"/>
+    <arg name="cloud_buffer_size" value="$(arg cloud_buffer_size)"/>
+    <arg name="preview_scale" value="$(arg preview_scale)"/>
+    <arg name="display_fps" value="$(arg display_fps)"/>
+    <arg name="show_image_preview" value="$(arg show_image_preview)"/>
+    <arg name="show_lidar_preview" value="$(arg show_lidar_preview)"/>
+    <arg name="image_sub_queue_size" value="$(arg image_sub_queue_size)"/>
+    <arg name="cloud_sub_queue_size" value="$(arg cloud_sub_queue_size)"/>
+  </include>
+</launch>

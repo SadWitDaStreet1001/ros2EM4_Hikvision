@@ -1,0 +1,10 @@
+<launch>
+  <arg name="config_path" default=""/>
+  <arg name="enable_rviz" default="false"/>
+
+  <node pkg="rslidar_sdk" name="rslidar_sdk_node" type="rslidar_sdk_node" output="screen">
+    <param name="config_path" value="$(arg config_path)"/>
+  </node>
+  <!-- rviz -->
+  <node if="$(arg enable_rviz)" pkg="rviz" name="rviz" type="rviz" args="-d $(find rslidar_sdk)/rviz/rviz.rviz" />
+</launch>

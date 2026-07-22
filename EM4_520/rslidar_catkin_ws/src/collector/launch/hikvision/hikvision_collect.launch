@@ -1,0 +1,37 @@
+<launch>
+  <arg name="image_topic" default="/hikvision/image_raw"/>
+  <arg name="cloud_topic" default="/rslidar_points"/>
+  <arg name="data_dir" default="$(find collector)/data/hikvision"/>
+  <arg name="max_sync_age" default="0.02"/>
+  <arg name="single_sync_timeout" default="0.5"/>
+  <arg name="image_buffer_size" default="10"/>
+  <arg name="cloud_buffer_size" default="60"/>
+  <arg name="max_display_points" default="40000"/>
+  <arg name="display_range_m" default="20.0"/>
+  <arg name="save_image_ext" default="png"/>
+  <arg name="preview_scale" default="0.2"/>
+  <arg name="display_fps" default="10.0"/>
+  <arg name="show_image_preview" default="true"/>
+  <arg name="show_lidar_preview" default="false"/>
+  <arg name="image_sub_queue_size" default="1"/>
+  <arg name="cloud_sub_queue_size" default="10"/>
+
+  <node pkg="collector" type="hikvision_collector_node.py" name="hikvision_collector" output="screen">
+    <param name="image_topic" value="$(arg image_topic)"/>
+    <param name="cloud_topic" value="$(arg cloud_topic)"/>
+    <param name="data_dir" value="$(arg data_dir)"/>
+    <param name="max_sync_age" value="$(arg max_sync_age)"/>
+    <param name="single_sync_timeout" value="$(arg single_sync_timeout)"/>
+    <param name="image_buffer_size" value="$(arg image_buffer_size)"/>
+    <param name="cloud_buffer_size" value="$(arg cloud_buffer_size)"/>
+    <param name="max_display_points" value="$(arg max_display_points)"/>
+    <param name="display_range_m" value="$(arg display_range_m)"/>
+    <param name="save_image_ext" value="$(arg save_image_ext)"/>
+    <param name="preview_scale" value="$(arg preview_scale)"/>
+    <param name="display_fps" value="$(arg display_fps)"/>
+    <param name="show_image_preview" value="$(arg show_image_preview)"/>
+    <param name="show_lidar_preview" value="$(arg show_lidar_preview)"/>
+    <param name="image_sub_queue_size" value="$(arg image_sub_queue_size)"/>
+    <param name="cloud_sub_queue_size" value="$(arg cloud_sub_queue_size)"/>
+  </node>
+</launch>

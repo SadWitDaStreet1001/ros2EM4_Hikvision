@@ -1,0 +1,23 @@
+<launch>
+  <arg name="image_topic" default="/zed/image_raw"/>
+  <arg name="cloud_topic" default="/rslidar_points"/>
+  <arg name="data_dir" default="$(find collector)/data/zed"/>
+  <arg name="max_sync_age" default="0.12"/>
+  <arg name="max_display_points" default="40000"/>
+  <arg name="display_range_m" default="20.0"/>
+  <arg name="save_image_ext" default="png"/>
+  <arg name="require_intensity" default="true"/>
+  <arg name="require_nonzero_intensity" default="true"/>
+
+  <node pkg="collector" type="zed_collector_node.py" name="zed_collector" output="screen">
+    <param name="image_topic" value="$(arg image_topic)"/>
+    <param name="cloud_topic" value="$(arg cloud_topic)"/>
+    <param name="data_dir" value="$(arg data_dir)"/>
+    <param name="max_sync_age" value="$(arg max_sync_age)"/>
+    <param name="max_display_points" value="$(arg max_display_points)"/>
+    <param name="display_range_m" value="$(arg display_range_m)"/>
+    <param name="save_image_ext" value="$(arg save_image_ext)"/>
+    <param name="require_intensity" value="$(arg require_intensity)"/>
+    <param name="require_nonzero_intensity" value="$(arg require_nonzero_intensity)"/>
+  </node>
+</launch>

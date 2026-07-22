@@ -1,0 +1,33 @@
+{
+  "cloud_topic": "/rslidar_points",
+  "created_wall_time": "2026-06-01T02:43:52.855",
+  "frames": [
+    {
+      "cloud_header_stamp": 4277.700025,
+      "cloud_recv_stamp": 1780281832.7901351,
+      "fallback_to_center_cloud": false,
+      "image_file": "current_image_1780281832_846820.png",
+      "image_header_stamp": 1780281832.8468196,
+      "image_recv_stamp": 1780281832.848762,
+      "label": "current",
+      "matched_cloud_stamp": 1780281832.7901351,
+      "pcd_data": "binary",
+      "pcd_fields": [
+        "x",
+        "y",
+        "z",
+        "intensity"
+      ],
+      "pcd_file": "current_cloud_1780281832_790135.pcd",
+      "point_count": 624000,
+      "skipped_fields": [],
+      "sync_delta_ms": 56.684494,
+      "sync_delta_sec": 0.056684494
+    }
+  ],
+  "group": "single_1780281832_846820",
+  "image_topic": "/hikvision/image_raw",
+  "max_sync_age_sec": 0.05,
+  "save_mode": "single_frame",
+  "used_center_cloud_fallback": false
+}

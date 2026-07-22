@@ -1,0 +1,29 @@
+# EM4 雷达配置（Robosense RSEM4-T）
+# 主机 IP/端口按 EM4_520 项目的实际值
+common:
+  msg_source: 1                         # 1: 来自在线雷达
+  send_packet_ros: false
+  send_point_cloud_ros: true
+
+lidar:
+  - driver:
+      lidar_type: RSEM4                 # EM4 系列
+      msop_port: 6699                   # 主数据流
+      difop_port: 7766                  # DIFOP / 标定信息
+      imu_port: 0
+      host_address: 192.168.1.102       # 主机侧 IP
+      user_layer_bytes: 0
+      tail_layer_bytes: 0
+      min_distance: 0.2
+      max_distance: 200
+      use_lidar_clock: true
+      wait_for_difop: true              # EM4 必须等 difop 才能解 packet
+      dense_points: false
+      ts_first_point: true
+      start_angle: 0
+      end_angle: 360
+
+    ros:
+      ros_frame_id: rslidar
+      ros_send_point_cloud_topic: /rslidar_points
+      ros_queue_length: 100

@@ -1,0 +1,28 @@
+<launch>
+  <arg name="camera_index" default="0"/>
+  <arg name="video_device" default="/dev/video1"/>
+  <arg name="width" default="3840"/>
+  <arg name="height" default="1080"/>
+  <arg name="fps" default="30"/>
+  <arg name="image_topic" default="/zed/image_raw"/>
+  <arg name="left_image_topic" default="/zed/left/image_raw"/>
+  <arg name="right_image_topic" default="/zed/right/image_raw"/>
+  <arg name="show_preview" default="true"/>
+  <arg name="preview_scale" default="0.5"/>
+
+  <node pkg="collector" type="zed_node.py" name="zed" output="screen">
+    <param name="camera_index" value="$(arg camera_index)"/>
+    <param name="video_device" value="$(arg video_device)"/>
+    <param name="width" value="$(arg width)"/>
+    <param name="height" value="$(arg height)"/>
+    <param name="fps" value="$(arg fps)"/>
+    <param name="image_topic" value="$(arg image_topic)"/>
+    <param name="left_image_topic" value="$(arg left_image_topic)"/>
+    <param name="right_image_topic" value="$(arg right_image_topic)"/>
+    <param name="frame_id" value="zed_camera"/>
+    <param name="left_frame_id" value="zed_left_camera"/>
+    <param name="right_frame_id" value="zed_right_camera"/>
+    <param name="show_preview" value="$(arg show_preview)"/>
+    <param name="preview_scale" value="$(arg preview_scale)"/>
+  </node>
+</launch>

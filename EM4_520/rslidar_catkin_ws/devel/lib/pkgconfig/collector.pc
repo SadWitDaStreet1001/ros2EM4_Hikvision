@@ -1,0 +1,8 @@
+prefix=/workspace/code/EM4_520/rslidar_catkin_ws/devel
+
+Name: collector
+Description: Description of collector
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

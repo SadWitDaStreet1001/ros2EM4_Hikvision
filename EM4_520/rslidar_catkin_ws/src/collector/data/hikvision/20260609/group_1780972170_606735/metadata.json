@@ -1,0 +1,77 @@
+{
+  "cloud_topic": "/rslidar_points",
+  "created_wall_time": "2026-06-09T02:29:30.713",
+  "frames": [
+    {
+      "cloud_header_stamp": 2510.800035,
+      "cloud_recv_stamp": 1780972170.5023127,
+      "fallback_to_center_cloud": false,
+      "image_file": "prev_image_1780972170_527090.png",
+      "image_header_stamp": 1780972170.5270896,
+      "image_recv_stamp": 1780972170.5307963,
+      "label": "prev",
+      "matched_cloud_stamp": 1780972170.5023127,
+      "pcd_data": "binary",
+      "pcd_fields": [
+        "x",
+        "y",
+        "z",
+        "intensity"
+      ],
+      "pcd_file": "prev_cloud_1780972170_502313.pcd",
+      "point_count": 611260,
+      "skipped_fields": [],
+      "sync_delta_ms": 24.776935,
+      "sync_delta_sec": 0.024776935
+    },
+    {
+      "cloud_header_stamp": 2510.900024,
+      "cloud_recv_stamp": 1780972170.5916662,
+      "fallback_to_center_cloud": false,
+      "image_file": "center_image_1780972170_606735.png",
+      "image_header_stamp": 1780972170.6067345,
+      "image_recv_stamp": 1780972170.610674,
+      "label": "center",
+      "matched_cloud_stamp": 1780972170.5916662,
+      "pcd_data": "binary",
+      "pcd_fields": [
+        "x",
+        "y",
+        "z",
+        "intensity"
+      ],
+      "pcd_file": "center_cloud_1780972170_591666.pcd",
+      "point_count": 407940,
+      "skipped_fields": [],
+      "sync_delta_ms": 15.068293,
+      "sync_delta_sec": 0.015068293
+    },
+    {
+      "cloud_header_stamp": 2511.000001,
+      "cloud_recv_stamp": 1780972170.6818507,
+      "fallback_to_center_cloud": false,
+      "image_file": "next_image_1780972170_687075.png",
+      "image_header_stamp": 1780972170.6870751,
+      "image_recv_stamp": 1780972170.6910696,
+      "label": "next",
+      "matched_cloud_stamp": 1780972170.6818507,
+      "pcd_data": "binary",
+      "pcd_fields": [
+        "x",
+        "y",
+        "z",
+        "intensity"
+      ],
+      "pcd_file": "next_cloud_1780972170_681851.pcd",
+      "point_count": 485160,
+      "skipped_fields": [],
+      "sync_delta_ms": 5.224467,
+      "sync_delta_sec": 0.005224467
+    }
+  ],
+  "group": "group_1780972170_606735",
+  "image_topic": "/hikvision/image_raw",
+  "max_sync_age_sec": 0.05,
+  "save_mode": "three_frame",
+  "used_center_cloud_fallback": false
+}

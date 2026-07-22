@@ -1,0 +1,28 @@
+# 相机内参（先用占位值，正式做外参标定前必须用真值替换）
+# 真值来源：ros2 跑 ros2 topic echo /camera/camera_info
+#       或 标定：参考 README 里 cam_intrinsic_calib.py
+image_width: 1920
+image_height: 1080
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [1500.0, 0.0, 960.0,
+         0.0, 1500.0, 540.0,
+         0.0, 0.0, 1.0]
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.0, 0.0, 0.0, 0.0, 0.0]
+distortion_model: plumb_bob
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1, 0, 0,
+         0, 1, 0,
+         0, 0, 1]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [1500.0, 0.0, 960.0, 0.0,
+         0.0, 1500.0, 540.0, 0.0,
+         0.0, 0.0, 1.0, 0.0]

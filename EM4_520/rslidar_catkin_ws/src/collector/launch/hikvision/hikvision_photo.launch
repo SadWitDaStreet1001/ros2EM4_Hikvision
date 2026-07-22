@@ -1,0 +1,25 @@
+<launch>
+  <arg name="rtsp_url" default="rtsp://admin:hyzx_hyzx@192.168.1.64:554/Streaming/Channels/101"/>
+  <arg name="capture_backend" default="ffmpeg"/>
+  <arg name="ffmpeg_capture_options" default="rtsp_transport;tcp|fflags;nobuffer|flags;low_delay|max_delay;0|reorder_queue_size;0|stimeout;5000000"/>
+  <arg name="save_dir" default="$(find collector)/data/hikvision/photos"/>
+  <arg name="save_image_ext" default="png"/>
+  <arg name="preview_scale" default="0.2"/>
+  <arg name="display_fps" default="10.0"/>
+  <arg name="reconnect_delay" default="2.0"/>
+  <arg name="read_fail_limit" default="25"/>
+  <arg name="display" default=":99"/>
+
+  <node pkg="collector" type="hikvision_photo_node.py" name="hikvision_photo" output="screen">
+    <env name="DISPLAY" value="$(arg display)"/>
+    <param name="rtsp_url" value="$(arg rtsp_url)"/>
+    <param name="capture_backend" value="$(arg capture_backend)"/>
+    <param name="ffmpeg_capture_options" value="$(arg ffmpeg_capture_options)"/>
+    <param name="save_dir" value="$(arg save_dir)"/>
+    <param name="save_image_ext" value="$(arg save_image_ext)"/>
+    <param name="preview_scale" value="$(arg preview_scale)"/>
+    <param name="display_fps" value="$(arg display_fps)"/>
+    <param name="reconnect_delay" value="$(arg reconnect_delay)"/>
+    <param name="read_fail_limit" value="$(arg read_fail_limit)"/>
+  </node>
+</launch>

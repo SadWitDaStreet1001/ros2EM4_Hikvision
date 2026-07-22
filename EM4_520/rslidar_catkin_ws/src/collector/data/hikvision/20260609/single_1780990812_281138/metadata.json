@@ -1,0 +1,40 @@
+{
+  "cloud_topic": "/rslidar_points",
+  "created_wall_time": "2026-06-09T07:40:12.371",
+  "frames": [
+    {
+      "cloud_header_stamp": 5294.600004,
+      "cloud_recv_stamp": 1780990812.2370887,
+      "cloud_trigger_delta_ms": -51.78761499999995,
+      "cloud_trigger_delta_sec": -0.051787614999999954,
+      "fallback_to_center_cloud": false,
+      "image_file": "current_image_1780990812_281138.png",
+      "image_header_stamp": 1780990812.281138,
+      "image_recv_stamp": 1780990812.2864125,
+      "image_trigger_delta_ms": -7.738351999999948,
+      "image_trigger_delta_sec": -0.007738351999999948,
+      "label": "current",
+      "matched_cloud_stamp": 1780990812.2370887,
+      "pcd_data": "binary",
+      "pcd_fields": [
+        "x",
+        "y",
+        "z",
+        "intensity"
+      ],
+      "pcd_file": "current_cloud_1780990812_237089.pcd",
+      "point_count": 486980,
+      "skipped_fields": [],
+      "sync_delta_ms": 44.049262999999996,
+      "sync_delta_sec": 0.044049263,
+      "trigger_stamp": 1780990812.2888763
+    }
+  ],
+  "group": "single_1780990812_281138",
+  "image_topic": "/hikvision/image_raw",
+  "max_sync_age_sec": 0.05,
+  "save_mode": "single_frame",
+  "sync_reference": "software_trigger",
+  "trigger_stamp": 1780990812.2888763,
+  "used_center_cloud_fallback": false
+}

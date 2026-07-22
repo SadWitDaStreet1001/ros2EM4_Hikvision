@@ -1,0 +1,63 @@
+# ROS2 Humble 容器 - 相机雷达联合标定数据采集
+#
+# === 关于挂载（重要）===
+#   容器内 /root/bags     <->  主机 ./bags       （保存的数据在这里！）
+#   容器内 /root/ros2_ws  <->  主机 ./ros2_ws    （源码双向同步）
+#   容器内 /root/scripts  <->  主机 ./scripts    （离线工具）
+#   /dev 全部透传          （相机 / 串口 / USB 设备）
+#
+# === 容器名 ===
+#   ros2_humble_calib
+#
+# === 常用命令 ===
+#   xhost +local:docker                              # 一次性
+#   docker compose build                             # 构建
+#   docker compose run --rm ros2 bash                # 进入容器（推荐）
+#   docker compose up -d ros2                        # 后台启动
+#   docker compose exec ros2 bash                    # 进入后台容器
+#   docker compose down                              # 停止
+#   docker compose logs -f ros2                      # 看日志
+#
+# === 进入容器后 ===
+#   source /opt/ros/humble/setup.bash                # 自动 source
+#   source /root/ros2_ws/install/setup.bash          # 自动 source
+#   ros2 launch key_save key_save.launch.py
+#
+version: "3.8"
+
+services:
+  ros2:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: ros2-humble-calib:latest
+    container_name: ros2_humble_calib
+    # host 网络：网口雷达 / NTP / PTP 最佳；串口雷达用 host 也 OK
+    network_mode: host
+    ipc: host
+    tty: true
+    stdin_open: true
+    # 调试期用 privileged；生产可改成 --cap-add=NET_ADMIN --device=/dev/video0
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - ROS_DOMAIN_ID=0
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    volumes:
+      # === 关键挂载 ===
+      - ./bags:/root/bags                # 数据落盘处（保存的 PNG/PCD 就在这）
+      - ./ros2_ws:/root/ros2_ws          # 源码双向
+      - ./scripts:/root/scripts          # 离线工具
+      # X11
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${HOME}/.Xauthority:/root/.Xauthority:rw
+      # 设备透传
+      - /dev:/dev
+    command: ["bash"]
+    # 健康检查（可选）
+    # healthcheck:
+    #   test: ["CMD", "bash", "-c", "source /opt/ros/humble/setup.bash && ros2 topic list"]
+    #   interval: 30s
+    #   timeout: 5s
+    #   retries: 3

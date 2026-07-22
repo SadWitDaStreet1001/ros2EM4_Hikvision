@@ -1,0 +1,2 @@
+label,image_file,pcd_file,image_header_stamp,image_recv_stamp,cloud_header_stamp,cloud_recv_stamp,matched_cloud_stamp,trigger_stamp,image_trigger_delta_ms,cloud_trigger_delta_ms,sync_delta_ms,point_count,fallback_to_center_cloud,pcd_data,pcd_fields,skipped_fields
+current,current_image_1780990733_795520.png,current_cloud_1780990733_754580.pcd,1780990733.795520067,1780990733.797927856,5216.100031000,1780990733.754580498,1780990733.754580498,1780990733.771703720,23.816,-17.123,40.940,544700,False,binary,x y z intensity,

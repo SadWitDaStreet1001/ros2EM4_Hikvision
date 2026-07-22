@@ -1,0 +1,8 @@
+prefix=/workspace/code/EM4_520/rslidar_catkin_ws/devel
+
+Name: rslidar_sdk
+Description: Description of rslidar_sdk
+Version: 1.5.16
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: sensor_msgs roslib

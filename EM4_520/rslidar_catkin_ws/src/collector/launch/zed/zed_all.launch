@@ -1,0 +1,35 @@
+<launch>
+  <arg name="camera_index" default="0"/>
+  <arg name="video_device" default="/dev/video1"/>
+  <arg name="width" default="3840"/>
+  <arg name="height" default="1080"/>
+  <arg name="fps" default="30"/>
+  <arg name="image_topic" default="/zed/image_raw"/>
+  <arg name="left_image_topic" default="/zed/left/image_raw"/>
+  <arg name="right_image_topic" default="/zed/right/image_raw"/>
+  <arg name="show_preview" default="true"/>
+  <arg name="preview_scale" default="0.5"/>
+  <arg name="cloud_topic" default="/rslidar_points"/>
+  <arg name="data_dir" default="$(find collector)/data/zed"/>
+  <arg name="max_sync_age" default="0.12"/>
+
+  <include file="$(find collector)/launch/zed/zed.launch">
+    <arg name="camera_index" value="$(arg camera_index)"/>
+    <arg name="video_device" value="$(arg video_device)"/>
+    <arg name="width" value="$(arg width)"/>
+    <arg name="height" value="$(arg height)"/>
+    <arg name="fps" value="$(arg fps)"/>
+    <arg name="image_topic" value="$(arg image_topic)"/>
+    <arg name="left_image_topic" value="$(arg left_image_topic)"/>
+    <arg name="right_image_topic" value="$(arg right_image_topic)"/>
+    <arg name="show_preview" value="$(arg show_preview)"/>
+    <arg name="preview_scale" value="$(arg preview_scale)"/>
+  </include>
+
+  <include file="$(find collector)/launch/zed/zed_collect.launch">
+    <arg name="image_topic" value="$(arg image_topic)"/>
+    <arg name="cloud_topic" value="$(arg cloud_topic)"/>
+    <arg name="data_dir" value="$(arg data_dir)"/>
+    <arg name="max_sync_age" value="$(arg max_sync_age)"/>
+  </include>
+</launch>
